@@ -62,7 +62,7 @@ export function Booking() {
         "cal-text-emphasis": "#f1ede1",
         "cal-text": "#f1ede1",
         "cal-text-muted": "rgba(241,237,225,0.5)",
-        "cal-brand": "#d4ff4d",
+        "cal-brand": "#7ad7ff",
       };
       cal("ui", {
         theme: "dark",

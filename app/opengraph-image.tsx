@@ -26,7 +26,7 @@ export default async function OpengraphImage() {
               width: 56,
               height: 56,
               borderRadius: 12,
-              background: "#d4ff4d",
+              background: "#7ad7ff",
               color: "#0a0a0a",
               display: "flex",
               alignItems: "center",
@@ -61,7 +61,7 @@ export default async function OpengraphImage() {
           <span>Practical AI for</span>
           <span>
             the businesses that{" "}
-            <span style={{ color: "#d4ff4d", fontStyle: "italic" }}>
+            <span style={{ color: "#7ad7ff", fontStyle: "italic" }}>
               actually run
             </span>
           </span>
