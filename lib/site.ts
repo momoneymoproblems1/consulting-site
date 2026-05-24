@@ -3,7 +3,7 @@ export const SITE = {
   tagline: "AI integrations for small businesses",
   email: "drewgood27@gmail.com",
   linkedinUrl: "https://linkedin.com/in/Andrew-gooding247",
-  baseUrl: "https://andrew-gooding.vercel.app",
+  baseUrl: "https://consulting-site-taupe.vercel.app",
   location: "Seattle, PST",
   availability: "Weekdays, 9am to 5pm PST",
 } as const;

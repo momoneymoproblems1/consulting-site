@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Instrument_Serif, Geist, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { SITE } from "@/lib/site";
 import "./globals.css";
 
 const serif = Instrument_Serif({
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
   title: "Andrew Gooding — AI integrations for small businesses",
   description:
     "Strategy workshops, custom GPTs, ops automation, and team training. Practical AI for small businesses, without rebuilding your stack. One call gets you concrete next steps.",
-  metadataBase: new URL("https://andrew-gooding.vercel.app"),
+  metadataBase: new URL(SITE.baseUrl),
   openGraph: {
     title: "Andrew Gooding — AI integrations for small businesses",
     description:
