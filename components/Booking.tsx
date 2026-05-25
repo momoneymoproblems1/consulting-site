@@ -32,22 +32,14 @@ function CheckIcon() {
 
 export function Booking() {
   const [tierId, setTierId] = useState<TierId>("30");
-  const [mountedTiers, setMountedTiers] = useState<Set<TierId>>(
-    () => new Set<TierId>(["30"]),
-  );
   const tier = tierById(tierId);
+  const calLink = `${CAL_USERNAME}/${CAL_SLUG_BY_TIER[tierId]}`;
 
   useEffect(() => {
     const onPick = (e: Event) => {
       const detail = (e as CustomEvent<TierId>).detail;
       if (TIERS.some((t) => t.id === detail)) {
         setTierId(detail);
-        setMountedTiers((prev) => {
-          if (prev.has(detail)) return prev;
-          const next = new Set(prev);
-          next.add(detail);
-          return next;
-        });
         setTimeout(() => {
           document
             .getElementById("book")
@@ -168,30 +160,17 @@ export function Booking() {
             </div>
 
             <div className="book-card">
-              <div className="cal-embed">
-                {TIERS.map((t) =>
-                  mountedTiers.has(t.id) ? (
-                    <div
-                      key={t.id}
-                      style={{
-                        display: tierId === t.id ? "block" : "none",
-                        width: "100%",
-                        height: "100%",
-                      }}
-                    >
-                      <Cal
-                        calLink={`${CAL_USERNAME}/${CAL_SLUG_BY_TIER[t.id]}`}
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          minHeight: "580px",
-                          overflow: "hidden",
-                        }}
-                        config={{ layout: "month_view", theme: "dark" }}
-                      />
-                    </div>
-                  ) : null,
-                )}
+              <div className="cal-embed" key={calLink}>
+                <Cal
+                  calLink={calLink}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    minHeight: "580px",
+                    overflow: "hidden",
+                  }}
+                  config={{ layout: "month_view", theme: "dark" }}
+                />
               </div>
             </div>
           </div>
