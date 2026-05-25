@@ -14,8 +14,6 @@ export type SubscribeState =
   | { status: "ok" }
   | { status: "error"; message: string };
 
-export const initialSubscribeState: SubscribeState = { status: "idle" };
-
 export async function subscribeNewsletter(
   _prev: SubscribeState,
   formData: FormData,

@@ -3,11 +3,9 @@
 import { useActionState } from "react";
 import { Reveal } from "./Reveal";
 import { SITE } from "@/lib/site";
-import {
-  initialContactState,
-  submitContact,
-  type ContactState,
-} from "@/lib/actions/contact";
+import { submitContact, type ContactState } from "@/lib/actions/contact";
+
+const initialContactState: ContactState = { status: "idle" };
 
 export function Contact() {
   const [state, formAction, isPending] = useActionState<ContactState, FormData>(

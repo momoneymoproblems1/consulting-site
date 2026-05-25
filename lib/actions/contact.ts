@@ -23,8 +23,6 @@ export type ContactState =
   | { status: "ok" }
   | { status: "error"; message: string };
 
-export const initialContactState: ContactState = { status: "idle" };
-
 const DEFAULT_TO = "drewgood27@gmail.com";
 const DEFAULT_FROM = "Andrew Gooding <onboarding@resend.dev>";
 

@@ -3,16 +3,17 @@
 import { useActionState } from "react";
 import { Reveal } from "./Reveal";
 import {
-  initialSubscribeState,
   subscribeNewsletter,
   type SubscribeState,
 } from "@/lib/actions/subscribe";
 
+const initialSubscribeState: SubscribeState = { status: "idle" };
+
 export function Newsletter() {
-  const [state, formAction, isPending] = useActionState<SubscribeState, FormData>(
-    subscribeNewsletter,
-    initialSubscribeState,
-  );
+  const [state, formAction, isPending] = useActionState<
+    SubscribeState,
+    FormData
+  >(subscribeNewsletter, initialSubscribeState);
 
   return (
     <section id="newsletter">
