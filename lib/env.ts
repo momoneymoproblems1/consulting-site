@@ -1,10 +1,20 @@
 import { z } from "zod";
 
+// Cal handle only, not a URL or path. Caught a real paste-failure where the env
+// var was set to "AndrewGooding/30-minutes" (full URL) — see Consulting/HANDOFF.md.
+const calUsername = z
+  .string()
+  .regex(
+    /^[a-zA-Z0-9_-]+$/,
+    'NEXT_PUBLIC_CAL_USERNAME must be just the Cal handle (e.g. "andrewgooding"), not a URL or path',
+  )
+  .optional();
+
 const envSchema = z.object({
   RESEND_API_KEY: z.string().min(1).optional(),
   RESEND_AUDIENCE_ID: z.string().min(1).optional(),
   CONTACT_TO_EMAIL: z.string().email().optional(),
-  NEXT_PUBLIC_CAL_USERNAME: z.string().optional(),
+  NEXT_PUBLIC_CAL_USERNAME: calUsername,
 });
 
 export const env = envSchema.parse({

@@ -6,7 +6,7 @@ import { Reveal } from "./Reveal";
 import { INTAKE_QUESTIONS } from "@/lib/intake";
 import { TIERS, tierById, type TierId } from "@/lib/tiers";
 
-const CAL_USERNAME = process.env.NEXT_PUBLIC_CAL_USERNAME ?? "andrew-gooding";
+const CAL_USERNAME = process.env.NEXT_PUBLIC_CAL_USERNAME ?? "andrewgooding";
 
 const CAL_SLUG_BY_TIER: Record<TierId, string> = {
   "30": "30-min",
