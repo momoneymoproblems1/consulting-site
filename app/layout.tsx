@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Instrument_Serif, Geist, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SITE } from "@/lib/site";
+import { PostHogProvider } from "@/components/PostHogProvider";
+import { PostHogPageview } from "@/components/PostHogPageview";
 import "./globals.css";
 
 const serif = Instrument_Serif({
@@ -58,7 +60,10 @@ export default function RootLayout({
       className={`${serif.variable} ${sans.variable} ${mono.variable}`}
     >
       <body>
-        {children}
+        <PostHogProvider>
+          {children}
+          <PostHogPageview />
+        </PostHogProvider>
         <Analytics />
       </body>
     </html>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Cal, { getCalApi } from "@calcom/embed-react";
+import posthog from "posthog-js";
 import { Reveal } from "./Reveal";
 import { INTAKE_QUESTIONS } from "@/lib/intake";
 import { TIERS, tierById, type TierId } from "@/lib/tiers";
@@ -71,6 +72,7 @@ export function Booking() {
         hideEventTypeDetails: false,
         layout: "month_view",
       });
+      posthog.capture("booking_iframe_loaded");
     }, 500);
     return () => {
       cancelled = true;

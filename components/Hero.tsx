@@ -1,5 +1,6 @@
 "use client";
 
+import posthog from "posthog-js";
 import { Reveal } from "./Reveal";
 import { CountUp } from "./CountUp";
 
@@ -41,10 +42,22 @@ export function Hero() {
               sticks. One call gets you concrete next steps.
             </p>
             <div className="hero-cta">
-              <a href="#book" className="btn btn-accent">
+              <a
+                href="#book"
+                className="btn btn-accent"
+                onClick={() =>
+                  posthog.capture("hero_cta_clicked", { cta: "book" })
+                }
+              >
                 Book a $500 consultation <span className="arrow">&rarr;</span>
               </a>
-              <a href="#work" className="btn btn-ghost">
+              <a
+                href="#work"
+                className="btn btn-ghost"
+                onClick={() =>
+                  posthog.capture("hero_cta_clicked", { cta: "see_work" })
+                }
+              >
                 See recent work
               </a>
             </div>

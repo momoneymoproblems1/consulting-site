@@ -1,6 +1,7 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect, useRef } from "react";
+import posthog from "posthog-js";
 import { Reveal } from "./Reveal";
 import { SITE } from "@/lib/site";
 import { submitContact, type ContactState } from "@/lib/actions/contact";
@@ -12,6 +13,14 @@ export function Contact() {
     submitContact,
     initialContactState,
   );
+  const sent = useRef(false);
+
+  useEffect(() => {
+    if (state.status === "ok" && !sent.current) {
+      sent.current = true;
+      posthog.capture("contact_submitted");
+    }
+  }, [state.status]);
 
   return (
     <section id="contact">

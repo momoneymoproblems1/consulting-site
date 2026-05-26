@@ -1,10 +1,12 @@
 "use client";
 
+import posthog from "posthog-js";
 import { Reveal } from "./Reveal";
 import { OngoingPartnership } from "./OngoingPartnership";
 import { TIERS, type TierId } from "@/lib/tiers";
 
 function pickTier(id: TierId) {
+  posthog.capture("pricing_tier_clicked", { tier: id });
   window.dispatchEvent(new CustomEvent("book-tier", { detail: id }));
 }
 

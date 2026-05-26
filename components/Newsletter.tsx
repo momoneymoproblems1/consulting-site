@@ -1,6 +1,7 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect, useRef } from "react";
+import posthog from "posthog-js";
 import { Reveal } from "./Reveal";
 import {
   subscribeNewsletter,
@@ -14,6 +15,14 @@ export function Newsletter() {
     SubscribeState,
     FormData
   >(subscribeNewsletter, initialSubscribeState);
+  const subscribed = useRef(false);
+
+  useEffect(() => {
+    if (state.status === "ok" && !subscribed.current) {
+      subscribed.current = true;
+      posthog.capture("newsletter_subscribed");
+    }
+  }, [state.status]);
 
   return (
     <section id="newsletter">
