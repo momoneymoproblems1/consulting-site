@@ -1,5 +1,6 @@
 "use client";
 
+import "@/lib/posthog-init";
 import { useEffect, useState } from "react";
 import Cal, { getCalApi } from "@calcom/embed-react";
 import posthog from "posthog-js";
